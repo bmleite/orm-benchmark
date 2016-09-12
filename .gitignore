@@ -4,5 +4,9 @@
 *.ear
 hs_err_pid*
 
+.gradle
+/build/
+!gradle-wrapper.jar
+
 src/jooq
 src/querydsl
