@@ -44,14 +44,4 @@ public class ActiveJdbcBenchmark {
         blackhole.consume(objects);
     }
 
-//    @Benchmark
-//    public void testList(Environment env, Blackhole blackhole) throws SQLException {
-//        List<DbObject> objects = new ArrayList<>();
-//        for (Model org.bmleite.model : ActiveDbObject.findAll().limit(env.totalRows)) {
-//            objects.add(mapper.map(org.bmleite.model));
-//        }
-//
-//        blackhole.consume(objects);
-//    }
-
 }
