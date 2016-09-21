@@ -8,7 +8,7 @@ import com.querydsl.sql.SQLTemplates;
 import com.querydsl.sql.types.DateTimeType;
 import com.querydsl.sql.types.LocalDateType;
 import org.bmleite.benchmark.Environment;
-import org.bmleite.model.QDbObject;
+import org.bmleite.model.querydsl.QDbObject;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;

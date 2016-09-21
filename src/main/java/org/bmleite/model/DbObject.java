@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DBOBJECT")
+@Table(name = "DB_OBJECT")
 public class DbObject {
 
     @Id

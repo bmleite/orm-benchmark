@@ -10,7 +10,6 @@ buildscript {
 }
 
 plugins {
-    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.7'
     id "me.champeau.gradle.jmh" version "0.3.1"
     id "nu.studer.jooq" version "1.0.6"
 }
@@ -24,10 +23,6 @@ targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
-}
-
-querydsl {
-    jpa = true
 }
 
 jooq {
@@ -107,3 +102,5 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14'
 }
+
+apply from: "gradle/querydsl.gradle"

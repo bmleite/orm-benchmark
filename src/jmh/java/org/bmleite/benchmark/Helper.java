@@ -19,7 +19,7 @@ public class Helper {
 
     private static final Logger LOG = LoggerFactory.getLogger(Helper.class);
 
-    public static final String DB_TABLE = "DBOBJECT";
+    public static final String DB_TABLE = "DB_OBJECT";
 
     // ----------------------------------------------------------------------------------------------------------------
 

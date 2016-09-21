@@ -1,0 +1,51 @@
+configurations {
+    querydsl
+    querydsl.extendsFrom compile
+}
+
+dependencies {
+    querydsl group: 'com.querydsl', name: 'querydsl-sql-codegen', version: '4.1.3'
+}
+
+def queryDslSourcesDir = file("src/querydsl")
+def queryDslSourcesJavaDir = file("${queryDslSourcesDir}/java/")
+
+compileJava {
+    source queryDslSourcesJavaDir
+}
+
+sourceSets {
+    querydsl {
+        java.srcDirs = [queryDslSourcesJavaDir]
+    }
+}
+
+task cleanQueryDsl(group: 'querydsl') {
+    doLast {
+        queryDslSourcesDir.deleteDir()
+    }
+}
+
+clean.dependsOn cleanQueryDsl
+
+task generateQueryDslClasses(group: 'querydsl') {
+    inputs.file "${projectDir}/sql/h2/schema.sql"
+    outputs.files queryDslSourcesJavaDir
+    doLast {
+        ant.taskdef(
+                name: 'generateQueryDsl',
+                classname: 'com.querydsl.sql.codegen.ant.AntMetaDataExporter',
+                classpath: configurations.querydsl.asPath
+        )
+        ant.generateQueryDsl(
+                jdbcDriver: 'org.h2.Driver',
+                jdbcUrl: "jdbc:h2:mem:test;INIT=RUNSCRIPT FROM '${projectDir}/sql/h2/schema.sql'",
+                jdbcUser: 'user',
+                jdbcPassword: 'pass',
+                packageName: 'org.bmleite.model.querydsl',
+                targetFolder: queryDslSourcesJavaDir
+        )
+    }
+}
+
+compileJava.dependsOn generateQueryDslClasses

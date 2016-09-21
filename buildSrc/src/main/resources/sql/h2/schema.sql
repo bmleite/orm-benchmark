@@ -1,7 +1,0 @@
-CREATE TABLE DBOBJECT (
-  id    BIGINT PRIMARY KEY,
-  prop1 VARCHAR(50),
-  prop3 VARCHAR(50),
-  prop2 VARCHAR(50),
-  prop4 VARCHAR(50)
-)
