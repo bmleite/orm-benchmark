@@ -29,7 +29,7 @@ jooq {
     sample(sourceSets.main) {
         jdbc {
             driver = 'org.h2.Driver'
-            url = 'jdbc:h2:mem:test;INIT=RUNSCRIPT FROM \'classpath:sql/h2/schema.sql\''
+            url = "jdbc:h2:mem:test;INIT=RUNSCRIPT FROM '${projectDir}/sql/h2/schema.sql'"
             user = 'user'
             password = 'pass'
             schema = 'public'
