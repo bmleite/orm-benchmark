@@ -1,7 +1,7 @@
 package org.bmleite.benchmark.jooq;
 
 import org.bmleite.benchmark.Environment;
-import org.bmleite.model.jooq.tables.Dbobject;
+import org.bmleite.model.jooq.tables.DbObject;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
@@ -35,7 +35,7 @@ public class JooqBenchmark {
 
     @Benchmark
     public void measureSelectAll(Environment env, Blackhole blackhole) throws SQLException {
-        Result<Record> records = dsl.select().from(Dbobject.DBOBJECT).limit(env.totalRows).fetch();
+        Result<Record> records = dsl.select().from(DbObject.DB_OBJECT).limit(env.totalRows).fetch();
         blackhole.consume(records);
     }
 
